@@ -1,33 +1,18 @@
 <?php
 
 // json response to attempting to charge the credit card
-$json_response = setCardInformation();
+$json_response = chargeCreditCard();
 
 // decoded json used to parse response information
-$res = json_decode($json_response, true);
-
-$transaction_res = $res['transactionResponse'];
+$res = json_decode($json_response, TRUE);
 
 echo $res;
-
-$res_messages = $transaction_res['messages'];
-
-//echo $res_messages;
-
-$res_code = $res_messages['code'];
-$res_message = $res_messages['description'];
-
-//echo "response code: " . utf8_encode($res_code);
-//echo "<br>";
-//echo "description: " . utf8_encode($res_message);
-
-//echo $res;
 
 
 // function takes the information form index.php form...
 // 1. creates a json object to send as a charge credit card request to the Authorize.net
 // 2. returns a json object with response information (approved or declined) to be parsed
-function setCardInformation() {
+function chargeCreditCard() {
 
     // arbitrary amount for testing
     $amount = "5.00";
