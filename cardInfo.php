@@ -4,9 +4,15 @@
 $json_response = chargeCreditCard();
 
 // decoded json used to parse response information
-$res = json_decode($json_response, TRUE);
+$res = json_decode($json_response, TRUE, JSON_OBJECT_AS_ARRAY);
+
+$transaction_res = $res["transactionResponse"];
+
+
 
 echo $res;
+echo "<br>";
+echo $transaction_res;
 
 
 // function takes the information form index.php form...
