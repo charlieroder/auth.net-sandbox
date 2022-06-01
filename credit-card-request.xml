@@ -1,0 +1,19 @@
+<!-- example credit card transaction request
+ -->
+<createTransactionRequest xmlns="AnetApi/xml/v1/schema/AnetApiSchema.xsd">
+    <merchantAuthentication>
+	    <name>96EN37Ggevh</name>
+	    <transactionKey>5zK7Z94T346GHkwp</transactionKey>
+    </merchantAuthentication>
+    <transactionRequest>
+	    <transactionType>authCaptureTransaction</transactionType>
+	    <amount>20.00</amount>
+	    <payment>
+	        <creditCard>
+		        <cardNumber>5424000000000015</cardNumber>
+		        <expirationDate>1223</expirationDate>
+		        <cardCode>999</cardCode>
+	        </creditCard>
+	    </payment>
+    </transactionRequest>
+</createTransactionRequest>
