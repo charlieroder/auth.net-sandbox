@@ -1,29 +1,55 @@
 <?php
 
+
 // json response to attempting to charge the credit card
 $json_response = chargeCreditCard();
 
+//print_r($json_response);
+
 // decoded json used to parse response information
-$res = json_decode($json_response, TRUE);
+$response_object = json_decode($json_response, true);
 
-//$transaction_res = $res["transactionResponse"];
+print_r($response_object);
+echo '<br><br>';
 
+$resCode = $response_object['transactionResponse']['responseCode'];
+echo $resCode;
+echo '<br><br>';
 
-echo $res;
+if ($resCode == "1"){
+    print_r("the transaction has been approved");
+}
 
 /*
-$transaction_res = $res->transactionResponse;
-
-if ($transaction_res->responseCode == "1"){
-    echo "response code 1";
+else if ($resCode == "2"){
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    print_r($error_array);
+    /* print_r("the transaction has been declined");
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    echo $error_array['errorText']; 
 }
-
-else {
-    echo "failed response code";
+else if ($resCode == "3"){
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    print_r($error_array);
+    /* print_r("there was an error in the transaction");
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    echo $error_array['errorText']; 
 }
-
-echo $transaction_res;
+else if ($resCode == "4"){
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    print_r($error_array);
+    /* print_r("the transaction has been put on hold for review");
+    echo '<br><br>';
+    $error_array = $response_object['transactionResponse']['errors'];
+    echo $error_array['errorText']; 
+}
 */
+
 
 // function takes the information form index.php form...
 // 1. creates a json object to send as a charge credit card request to the Authorize.net

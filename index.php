@@ -47,106 +47,58 @@
 
 
 <?php
-    /*
-    function setCardInformation() {
-
-        $amount = "5.00";
-
-        $merchantAuth = array(
-            "name" => "96EN37Ggevh",
-            "transactionKey" => "5zK7Z94T346GHkwp"
-        );
-
-        $object = array(
-            "createTransactionRequest" => array(
-                "merchantAuthentication" => $merchantAuth,
-                "transactionRequest" => array(
-                    "transactionType" => "authCaptureTransaction",
-                    "amount" => $amount,
-                    "payment" => array(
-                        "creditCard" => array(
-                            "cardNumber" => $_POST['card-number'],
-                            "expirationDate" => $_POST["month"] . "-" . $_POST["year"],
-                            "cardCode" => "999"
-                        )
-                    )
-                )
-            )
-        );
-
-        $json = json_encode($object);
-
-        echo $json;
-
-        //$xml = file_get_contents('credit-card-request.xml');
-
-        //$url = 'https://apitest.authorize.net/xml/v1/request.api';
-
-        //$curl = curl_init($url);
-
-        //curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: text/json"));
-
-        //curl_setopt($curl, CURLOPT_POST, true);
-
-        //curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-
-        //curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-        //$result = curl_exec($curl);
-
-        //if(curl_errno($curl)){
-        //    throw new Exception(curl_error($curl));
-        //}
-
-        //curl_close($curl);
-
-        //$responseObj = json_encode($result);
-
-        //echo $responseObj;
-
-        // print the transaction request result
-        //echo $result;
-        //return $json; 
+    $jsonObj = '
+    {
+        "transactionResponse": {
+            "responseCode": "1",
+            "authCode": "HW617E",
+            "avsResultCode": "Y",
+            "cvvResultCode": "",
+            "cavvResultCode": "",
+            "transId": "2157047189",
+            "refTransID": "",
+            "transHash": "E7CEB0A9F1BECA32A02493E1B31D5955",
+            "testRequest": "0",
+            "accountNumber": "XXXX1111",
+            "accountType": "Visa",
+            "messages": [
+                {
+                    "code": "1",
+                    "description": "This transaction has been approved."
+                }
+            ],
+            "transHashSha2": "D0C4FFF5648511A5862B917CFD9BB78ABF8A6E1D90C119CBBC4C0B454F4FF40DED15B204E042F36ECA5FB15D02588E4E4A7B85B94E7279599CE6020462CB7DEE",
+            "SupplementalDataQualificationIndicator": 0,
+        "networkTransId": "123456789NNNH"
+        },
+        "messages": {
+            "resultCode": "Ok",
+            "message": [
+                {
+                    "code": "I00001",
+                    "text": "Successful."
+                }
+            ]
+        }
     }
-    if (isset($_POST['submit-btn'])){
-        setCardInformation();
-    }
-    */
+    ';
+
+    //echo '<br><br>';
+    //echo $jsonObj;
+    echo '<br><br>';
+
+    $json_array = json_decode($jsonObj, true);
+
+    print_r($json_array);
+    echo '<br><br>';
+    print_r($json_array['messages']);
+    echo '<br><br>';
+    $res = $json_array['transactionResponse']['responseCode'];
+    echo '<br><br>';
+    echo $res;
+    echo '<br><br>';
+
+    //echo $transactionRes['responseCode'];
+
 ?>
 
-
-
-<?php
-
-/* $info = setCardInformation();
-
-//$xml = file_get_contents('credit-card-request.xml');
-
-$url = 'https://apitest.authorize.net/xml/v1/request.api';
-
-$curl = curl_init($url);
-
-curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: text/xml"));
-
-curl_setopt($curl, CURLOPT_POST, true);
-
-curl_setopt($curl, CURLOPT_POSTFIELDS, $info);
-
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$result = curl_exec($curl);
-
-if(curl_errno($curl)){
-    throw new Exception(curl_error($curl));
-}
-
-curl_close($curl);
-
-$responseObj = json_encode($result);
-
-echo $responseObj;
-
-// print the transaction request result
-echo $result;
- */
-?>
