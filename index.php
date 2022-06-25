@@ -46,7 +46,12 @@
 </form>
 
 
+
 <?php
+
+    // this is the testing object created to test parsing an existing json response object
+    // the issue with the black diamond happens in cardInfo.php when similar parsing commands are used
+    
     $jsonObj = '
     {
         "transactionResponse": {

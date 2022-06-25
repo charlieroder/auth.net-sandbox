@@ -2,23 +2,24 @@
 
 
 // json response to attempting to charge the credit card
-$json_response = chargeCreditCard();
-
-//print_r($json_response);
+$res = chargeCreditCard();
 
 // decoded json used to parse response information
-$response_object = json_decode($json_response, true);
+$decode_res = json_decode($res, true);
 
-print_r($response_object);
 echo '<br><br>';
 
-$resCode = $response_object['transactionResponse']['responseCode'];
+$resCode = $decode_res['transactionResponse']['responseCode'];
 echo $resCode;
 echo '<br><br>';
 
 if ($resCode == "1"){
     print_r("the transaction has been approved");
 }
+
+
+
+// other if statements for different response codes... to be completed
 
 /*
 else if ($resCode == "2"){
@@ -65,7 +66,6 @@ function chargeCreditCard() {
         "transactionKey" => "5zK7Z94T346GHkwp"
         );
 
-    //echo $merchantAuth;
 
     // check if necessary information as been entered then create the request object
     if (isset($_POST['card-number'], $_POST['month'], $_POST['year'])) {
@@ -113,7 +113,7 @@ function chargeCreditCard() {
 
         // encode response object then return it to be parsed
         $responseObj = json_encode($result);
-        return $responseObj;
+        return $result;
     }
 
     else {
