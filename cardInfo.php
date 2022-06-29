@@ -1,12 +1,12 @@
 <?php
 
-require 'vender/autoload.php';
+require 'vendor/autoload.php';
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-chargeCreditCard(5.00);
+chargeCreditCard(5.00, 5424000000000015, 2021, 06);
 // json response to attempting to charge the credit card
 //$res = chargeCreditCard();
 
@@ -61,7 +61,10 @@ else if ($resCode == "4"){
 // function takes the information form index.php form...
 // 1. creates a json object to send as a charge credit card request to the Authorize.net
 // 2. returns a json object with response information (approved or declined) to be parsed
-function chargeCreditCard($amount) {
+function chargeCreditCard($amount, 
+                            $cardNum, 
+                            $cardYear, 
+                            $cardMonth) {
 
     // Common setup for API credentials  
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();   
@@ -70,8 +73,8 @@ function chargeCreditCard($amount) {
     $refId = 'ref' . time();
 
     //credit card information from form
-    $cardNumber = $_POST['card-number'];
-    $cardMonthYear = $_POST['year'] . '-' . $_POST['month'];
+    $cardNumber = $cardNum;
+    $cardMonthYear = $cardYear . '-' . $cardMonth;
 
     // Create the payment data for a credit card
     $creditCard = new AnetAPI\CreditCardType();
@@ -100,13 +103,14 @@ function chargeCreditCard($amount) {
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="2")){
             echo "Attemped charge credit card: declined \n";
-            echo "declined message : " . $tresponse->getErrorText() . "\n";
+            // return error message here
+            //echo "declined message : " . $tresponse->getErrorText() . "\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="3")){
-            echo "Attempted charge credit card: error";
+            echo "Attempted charge credit card: error\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="4")){
-            echo "Attempted charge credit card: held for review";
+            echo "Attempted charge credit card: held for review\n";
         }
         else {
             echo "other error";
