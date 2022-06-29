@@ -6,50 +6,7 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-// Common setup for API credentials  
-$merchantAuthentication = new AnetAPI\MerchantAuthenticationType();   
-$merchantAuthentication->setName("YOUR_API_LOGIN_ID");   
-$merchantAuthentication->setTransactionKey("YOUR_TRANSACTION_KEY");   
-$refId = 'ref' . time();
-
-// Create the payment data for a credit card
-$creditCard = new AnetAPI\CreditCardType();
-$creditCard->setCardNumber("4111111111111111" );  
-$creditCard->setExpirationDate( "2038-12");
-$paymentOne = new AnetAPI\PaymentType();
-$paymentOne->setCreditCard($creditCard);
-
-// Create a transaction
-$transactionRequestType = new AnetAPI\TransactionRequestType();
-$transactionRequestType->setTransactionType("authCaptureTransaction");   
-$transactionRequestType->setAmount(151.51);
-$transactionRequestType->setPayment($paymentOne);
-$request = new AnetAPI\CreateTransactionRequest();
-$request->setMerchantAuthentication($merchantAuthentication);
-$request->setRefId( $refId);
-$request->setTransactionRequest($transactionRequestType);
-$controller = new AnetController\CreateTransactionController($request);
-$response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);   
-
-if ($response != null) 
-{
-$tresponse = $response->getTransactionResponse();
-if (($tresponse != null) && ($tresponse->getResponseCode()=="1"))
-{
-  echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
-  echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
-}
-else
-{
-  echo "Charge Credit Card ERROR :  Invalid response\n";
-}
-}  
-else
-{
-echo  "Charge Credit Card Null response returned";
-}
-
-
+chargeCreditCard(5.00);
 // json response to attempting to charge the credit card
 //$res = chargeCreditCard();
 
@@ -104,17 +61,62 @@ else if ($resCode == "4"){
 // function takes the information form index.php form...
 // 1. creates a json object to send as a charge credit card request to the Authorize.net
 // 2. returns a json object with response information (approved or declined) to be parsed
-function chargeCreditCard() {
+function chargeCreditCard($amount) {
 
-    // arbitrary amount for testing
+    // Common setup for API credentials  
+    $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();   
+    $merchantAuthentication->setName("96EN37Ggevh");   
+    $merchantAuthentication->setTransactionKey("5zK7Z94T346GHkwp");   
+    $refId = 'ref' . time();
+
+    //credit card information from form
+    $cardNumber = $_POST['card-number'];
+    $cardMonthYear = $_POST['year'] . '-' . $_POST['month'];
+
+    // Create the payment data for a credit card
+    $creditCard = new AnetAPI\CreditCardType();
+    $creditCard->setCardNumber($cardNumber);  
+    $creditCard->setExpirationDate($cardMonthYear);
+    $paymentOne = new AnetAPI\PaymentType();
+    $paymentOne->setCreditCard($creditCard);
+
+    // Create a transaction
+    $transactionRequestType = new AnetAPI\TransactionRequestType();
+    $transactionRequestType->setTransactionType("authCaptureTransaction");   
+    $transactionRequestType->setAmount($amount);
+    $transactionRequestType->setPayment($paymentOne);
+    $request = new AnetAPI\CreateTransactionRequest();
+    $request->setMerchantAuthentication($merchantAuthentication);
+    $request->setRefId( $refId);
+    $request->setTransactionRequest($transactionRequestType);
+    $controller = new AnetController\CreateTransactionController($request);
+    $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX); 
+
+    if ($response != null){
+        $tresponse = $response->getTransactionResponse();
+        if (($tresponse != null) && ($tresponse->getResponseCode()=="1")){
+            echo "Charge Credit Card AUTH CODE : " . $tresponse->getAuthCode() . "\n";
+            echo "Charge Credit Card TRANS ID  : " . $tresponse->getTransId() . "\n";
+        }
+        else if (($tresponse != null) && ($tresponse->getResponseCode()=="2")){
+            echo "Attemped charge credit card: declined \n";
+            echo "declined message : " . $tresponse->getErrorText() . "\n";
+        }
+        else if (($tresponse != null) && ($tresponse->getResponseCode()=="3")){
+            echo "Attempted charge credit card: error";
+        }
+        else if (($tresponse != null) && ($tresponse->getResponseCode()=="4")){
+            echo "Attempted charge credit card: held for review";
+        }
+        else {
+            echo "other error";
+        }
+    }
+
+
+
+    /* // arbitrary amount for testing
     $amount = "5.00";
-
-    // merchant authentication information to be added to 
-    $merchantAuth = array(
-        "name" => "96EN37Ggevh",
-        "transactionKey" => "5zK7Z94T346GHkwp"
-        );
-
 
     // check if necessary information as been entered then create the request object
     if (isset($_POST['card-number'], $_POST['month'], $_POST['year'])) {
@@ -171,6 +173,6 @@ function chargeCreditCard() {
     else {
         // request sending process failed
         echo "failed";
-    }
+    } */
 }
 ?>
