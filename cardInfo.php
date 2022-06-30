@@ -67,67 +67,6 @@ function chargeCreditCard($amount,
             echo "other error";
         }
     }
-
-
-
-    /* // arbitrary amount for testing
-    $amount = "5.00";
-
-    // check if necessary information as been entered then create the request object
-    if (isset($_POST['card-number'], $_POST['month'], $_POST['year'])) {
-        $cardNumber = $_POST['card-number'];
-        $cardMonthYear = $_POST['year'] . '-' . $_POST['month'];
-
-        $object = array(
-            "createTransactionRequest" => array(
-                "merchantAuthentication" => $merchantAuth,
-                "transactionRequest" => array(
-                    "transactionType" => "authCaptureTransaction",
-                    "amount" => $amount,
-                    "payment" => array(
-                        "creditCard" => array(
-                            "cardNumber" => $_POST['card-number'],
-                            "expirationDate" => $_POST["month"] . "-" . $_POST["year"],
-                            "cardCode" => "999"
-                        )
-                    )
-                )
-            )
-        );
-
-        // encode object from php object to a json object
-        $json = json_encode($object);
-
-        //echo $json;
-
-        // endpoint url object is being sent to 
-        $url = 'https://apitest.authorize.net/xml/v1/request.api';
-
-        // send object via post
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: text/json"));
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($curl);
-
-        if(curl_errno($curl)){
-           throw new Exception(curl_error($curl));
-        }
-
-        curl_close($curl);
-
-        $json = preg_replace('/[\x00-\x1F\x80-\xFF', '', $result);
-
-        $response = json_decode($json, true);
-
-        // encode response object then return it to be parsed
-        return $response;
-    }
-
-    else {
-        // request sending process failed
-        echo "failed";
-    } */
+    
 }
 ?>
