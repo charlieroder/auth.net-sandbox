@@ -39,6 +39,12 @@
             </select>
         </div>
     </div>
+    <div class="field-row">
+        <label>Amount to Pay</label> <span
+            id="amount" class="info"></span><br> <input
+            type="text" id="payment-amount" name="payment-amount"
+            class="demoInputBox">
+    </div>
     <div>
         <input type="submit" name="pay_now" value="Submit"
             name="submit-btn" class="btnAction">

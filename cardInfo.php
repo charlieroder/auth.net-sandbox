@@ -6,61 +6,13 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-chargeCreditCard(5.00, $_POST['card-number'], $_POST['year'], $_POST['month']);
-// json response to attempting to charge the credit card
-//$res = chargeCreditCard();
-
-// decoded json used to parse response information
-//$decode_res = json_decode($res, true);
-
-//echo '<br><br>';
-
-//$resCode = $res['transactionResponse']['responseCode'];
-//echo $resCode;
-//echo '<br><br>';
-
-/* if ($resCode == "1"){
-    print_r("the transaction has been approved");
-} */
-
-
-
-// other if statements for different response codes... to be completed
-
-/*
-else if ($resCode == "2"){
-    echo '<br><br>';
-    $error_array = $res['transactionResponse']['errors'];
-    print_r($error_array);
-    print_r("the transaction has been declined");
-    //echo '<br><br>';
-    //$error_array = $response_object['transactionResponse']['errors'];
-    //echo $error_array['errorText']; 
-}
-else if ($resCode == "3"){
-    echo '<br><br>';
-    $error_array = $res['transactionResponse']['errors'];
-    print_r($error_array);
-    print_r("there was an error in the transaction");
-    //echo '<br><br>';
-    //$error_array = $response_object['transactionResponse']['errors'];
-    echo $error_array['errorText']; 
-}
-else if ($resCode == "4"){
-    echo '<br><br>';
-    $error_array = $res['transactionResponse']['errors'];
-    print_r($error_array);
-    print_r("the transaction has been put on hold for review");
-    //echo '<br><br>';
-    //$error_array = $response_object['transactionResponse']['errors'];
-    //echo $error_array['errorText']; 
-}
-
-*/
+chargeCreditCard($_POST['payment-amount'], $_POST['card-number'], $_POST['year'], $_POST['month']);
 
 // function takes the information form index.php form...
-// 1. creates a json object to send as a charge credit card request to the Authorize.net
-// 2. returns a json object with response information (approved or declined) to be parsed
+// 1. sets merchant authentication information
+// 2. sets card information from the form and payment information
+// 3. creates and send a transaction with the information
+// 4. handles response codes from the transaction request and displays messages
 function chargeCreditCard($amount, 
                             $cardNum, 
                             $cardYear, 
@@ -104,12 +56,9 @@ function chargeCreditCard($amount,
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="2")){
             echo "Attemped charge credit card: declined \n";
             // return error message here
-            echo "declined message : " . $tresponse->getResponseText() . "\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="3")){
             echo "Attempted charge credit card: error\n";
-            echo "error message : " . $tresponse->getResponseText() . "\n";
-
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="4")){
             echo "Attempted charge credit card: held for review\n";
