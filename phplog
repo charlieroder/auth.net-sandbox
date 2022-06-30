@@ -978,3 +978,181 @@
  Thu, 30 Jun 2022 04:58:33 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 89) - Sending 'XML' Request type
  Thu, 30 Jun 2022 04:58:33 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 94) - Sending http request via Curl
  Thu, 30 Jun 2022 04:58:34 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 96) - Response from AnetApi: ﻿{"transactionResponse":{"responseCode":"1","authCode":"9D7NPO","avsResultCode":"Y","cvvResultCode":"P","cavvResultCode":"2","transId":"60195279450","refTransID":"","transHash":"","testRequest":"0","accountNumber":"XXXX0015","accountType":"MasterCard","messages":[{"code":"1","description":"This transaction has been approved."}],"transHashSha2":"","SupplementalDataQualificationIndicator":0,"networkTransId":"SFN9BKV9S2REZBSXZ99V2ZJ"},"refId":"ref1656565113","messages":{"resultCode":"Ok","message":[{"code":"I00001","text":"Successful."}]}}
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 114) - Request Creation Begin
+ Thu, 30 Jun 2022 05:09:19 +0000 DEBUG : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 115) - net\authorize\api\contract\v1\GetHostedPaymentPageRequest Object
+(
+    [transactionRequest:net\authorize\api\contract\v1\GetHostedPaymentPageRequest:private] => net\authorize\api\contract\v1\TransactionRequestType Object
+        (
+            [transactionType:net\authorize\api\contract\v1\TransactionRequestType:private] => authCaptureTransaction
+            [amount:net\authorize\api\contract\v1\TransactionRequestType:private] => 12.23
+            [currencyCode:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [payment:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [profile:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [solution:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [callId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [terminalNumber:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [authCode:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [refTransId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [splitTenderId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [order:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [lineItems:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [tax:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [duty:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipping:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [taxExempt:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [poNumber:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [customer:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [billTo:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipTo:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [customerIP:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [cardholderAuthentication:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [retail:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [employeeId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [transactionSettings:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [userFields:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [surcharge:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [merchantDescriptor:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [subMerchant:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [tip:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [processingOptions:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [subsequentAuthInformation:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [otherTax:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipFrom:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [authorizationIndicatorType:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+        )
+
+    [hostedPaymentSettings:net\authorize\api\contract\v1\GetHostedPaymentPageRequest:private] => Array
+        (
+            [0] => net\authorize\api\contract\v1\SettingType Object
+                (
+                    [settingName:net\authorize\api\contract\v1\SettingType:private] => hostedPaymentButtonOptions
+                    [settingValue:net\authorize\api\contract\v1\SettingType:private] => {"text": "Pay"}
+                )
+
+            [1] => net\authorize\api\contract\v1\SettingType Object
+                (
+                    [settingName:net\authorize\api\contract\v1\SettingType:private] => hostedPaymentOrderOptions
+                    [settingValue:net\authorize\api\contract\v1\SettingType:private] => {"show": false}
+                )
+
+            [2] => net\authorize\api\contract\v1\SettingType Object
+                (
+                    [settingName:net\authorize\api\contract\v1\SettingType:private] => hostedPaymentReturnOptions
+                    [settingValue:net\authorize\api\contract\v1\SettingType:private] => {"url": "https://mysite.com/receipt", "cancelUrl": "https://mysite.com/cancel", "showReceipt": true}
+                )
+
+        )
+
+    [merchantAuthentication:net\authorize\api\contract\v1\ANetApiRequestType:private] => net\authorize\api\contract\v1\MerchantAuthenticationType Object
+        (
+            [name:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 96EN37Ggevh
+            [transactionKey:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => xxxx
+            [sessionToken:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [password:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [impersonationAuthentication:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [fingerPrint:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [clientKey:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [accessToken:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [mobileDeviceId:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+        )
+
+    [clientId:net\authorize\api\contract\v1\ANetApiRequestType:private] => sdk-php-2.0.2
+    [refId:net\authorize\api\contract\v1\ANetApiRequestType:private] => ref1656565759
+)
+
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 126) - Request  Creation End
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 75) -  Url: https://apitest.authorize.net/xml/v1/request.api
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 77) - Request to AnetApi: 
+{"getHostedPaymentPageRequest":{"merchantAuthentication":{"name":"96EN37Ggevh","transactionKey":"5zK7Z94T346GHkwp"},"clientId":"sdk-php-2.0.2","refId":"ref1656565759","transactionRequest":{"transactionType":"authCaptureTransaction","amount":"12.23"},"hostedPaymentSettings":{"setting":[{"settingName":"hostedPaymentButtonOptions","settingValue":"{\"text\": \"Pay\"}"},{"settingName":"hostedPaymentOrderOptions","settingValue":"{\"show\": false}"},{"settingName":"hostedPaymentReturnOptions","settingValue":"{\"url\": \"https:\/\/mysite.com\/receipt\", \"cancelUrl\": \"https:\/\/mysite.com\/cancel\", \"showReceipt\": true}"}]}}}
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 89) - Sending 'XML' Request type
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 94) - Sending http request via Curl
+ Thu, 30 Jun 2022 05:09:19 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 96) - Response from AnetApi: ﻿{"token":"oXnobjZJPu/z6kVxS8rLW8KLFNO0+/17//Ibuzk4wHJkxGGYU8TLf+nmgZt5OS5HJSZwLrk4bkcCddjaPJuQHGM/07IpmXVVazJNnAmXDsqeSycdGLDiXQEU4td8l10HNbHZGS0tnZGaGvMkfdIdxH52XhO3Cm3ka3y1StZbCm/p8OK/8usJNBl52ute9dNkJke9kYi3Mn0/osuxpYtaY5kiwfvSLWtbEiwCESjSEX077u32mWjfyprMNzFt9TJXuj8I9GAUYUYB80TQzcykhhPyPY6FedSJQTMVrskthu20mFiI2hOVkg0QSBBk5FW1R1gCm7wxY1+Pz7Ot4bCeUzRHaGqJvr9qY6ZQeyoGOkGpibqBhhQNGKXJX6ttd4q/i3HDor+qSQuTmYFTz1MLoZt86ZItrT3Sl7UlfCfu8RIDHENOOlemRLMzMT3Qm7wE5sIDv+GkfJ5AUjWrdqXfc6szljh1UVejg7EWzqwA0/MdNtrly6SJzpmkoYo908cwesH9zqr0cwKxZgAWqNMwcJ4IIVKeIjOz01GDoqzzXpZvT7+vMn0oRS9aKHEfOgJ3LXiObPY/k5CSGv1cecnvfzB1806pVDL3r1Ii3UscxYcspPG57RugLjxo6yZNeA6bkzu6zg6peH7MaiDOn4ZOh4OMcgEYK5OcVbFUxJUp2cLWma94i8THWs5+llsXIezQlgO3cpoxuZweDi8+cqvHKujyy/ARWLUhA/RNuod2YoevE+hQ+7WKImsRuSWMZb1/cCtFDTUeD3oG3TrIWFhNq/rTW8OXxC2/GMy7KZHtUJ00ty5bHYh4Msvhr8QRUyrnYeqvri2tVog7zWn0L1t3FOidwlJuBtekmSLKr5alVJbr4PQT8Yd3zHrtWRF9IMGaQ/SWEWvVxelUKspISiuk6dErk5ZygHtOZCNOIfM3Z6qMmA2Ws8HLQ+JOQGgISrMwNt4HktaVcFXYtbBljEXd4gVoPkiiPl8s59gYEtDtDU5ZFBNwzeCk1p8K/CMe7AnCm5a+3KULZsTAKwP58n0xue3MDQFtExU6g9L3D1/t3OY6MIzxA1idL0ayVGfe8gjRld2WWFEaEtsL1KOttRNT7g==.96EN37Ggevh","refId":"ref1656565759","messages":{"resultCode":"Ok","message":[{"code":"I00001","text":"Successful."}]}}
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 114) - Request Creation Begin
+ Thu, 30 Jun 2022 05:14:46 +0000 DEBUG : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 115) - net\authorize\api\contract\v1\CreateTransactionRequest Object
+(
+    [transactionRequest:net\authorize\api\contract\v1\CreateTransactionRequest:private] => net\authorize\api\contract\v1\TransactionRequestType Object
+        (
+            [transactionType:net\authorize\api\contract\v1\TransactionRequestType:private] => authCaptureTransaction
+            [amount:net\authorize\api\contract\v1\TransactionRequestType:private] => 4.00
+            [currencyCode:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [payment:net\authorize\api\contract\v1\TransactionRequestType:private] => net\authorize\api\contract\v1\PaymentType Object
+                (
+                    [creditCard:net\authorize\api\contract\v1\PaymentType:private] => net\authorize\api\contract\v1\CreditCardType Object
+                        (
+                            [cardCode:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [isPaymentToken:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [cryptogram:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [tokenRequestorName:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [tokenRequestorId:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [tokenRequestorEci:net\authorize\api\contract\v1\CreditCardType:private] => 
+                            [cardNumber:net\authorize\api\contract\v1\CreditCardSimpleType:private] => xxxx-0015
+                            [expirationDate:net\authorize\api\contract\v1\CreditCardSimpleType:private] => xxxx
+                        )
+
+                    [bankAccount:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [trackData:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [encryptedTrackData:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [payPal:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [opaqueData:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [emv:net\authorize\api\contract\v1\PaymentType:private] => 
+                    [dataSource:net\authorize\api\contract\v1\PaymentType:private] => 
+                )
+
+            [profile:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [solution:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [callId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [terminalNumber:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [authCode:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [refTransId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [splitTenderId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [order:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [lineItems:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [tax:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [duty:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipping:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [taxExempt:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [poNumber:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [customer:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [billTo:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipTo:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [customerIP:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [cardholderAuthentication:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [retail:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [employeeId:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [transactionSettings:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [userFields:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [surcharge:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [merchantDescriptor:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [subMerchant:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [tip:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [processingOptions:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [subsequentAuthInformation:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [otherTax:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [shipFrom:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+            [authorizationIndicatorType:net\authorize\api\contract\v1\TransactionRequestType:private] => 
+        )
+
+    [merchantAuthentication:net\authorize\api\contract\v1\ANetApiRequestType:private] => net\authorize\api\contract\v1\MerchantAuthenticationType Object
+        (
+            [name:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 96EN37Ggevh
+            [transactionKey:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => xxxx
+            [sessionToken:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [password:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [impersonationAuthentication:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [fingerPrint:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [clientKey:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [accessToken:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+            [mobileDeviceId:net\authorize\api\contract\v1\MerchantAuthenticationType:private] => 
+        )
+
+    [clientId:net\authorize\api\contract\v1\ANetApiRequestType:private] => sdk-php-2.0.2
+    [refId:net\authorize\api\contract\v1\ANetApiRequestType:private] => ref1656566086
+)
+
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [execute] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/api/controller/base/ApiOperationBase.php : 126) - Request  Creation End
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 75) -  Url: https://apitest.authorize.net/xml/v1/request.api
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 77) - Request to AnetApi: 
+{"createTransactionRequest":{"merchantAuthentication":{"name":"96EN37Ggevh","transactionKey":"5zK7Z94T346GHkwp"},"clientId":"sdk-php-2.0.2","refId":"ref1656566086","transactionRequest":{"transactionType":"authCaptureTransaction","amount":"4.00","payment":{"creditCard":{"cardNumber":"5xxxx15","expirationDate":"2020-09"}}}}}
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 89) - Sending 'XML' Request type
+ Thu, 30 Jun 2022 05:14:46 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 94) - Sending http request via Curl
+ Thu, 30 Jun 2022 05:14:47 +0000 INFO : [_sendRequest] (/Users/charlieroder/Desktop/php-project/auth.net-sandbox/vendor/authorizenet/authorizenet/lib/net/authorize/util/HttpClient.php : 96) - Response from AnetApi: ﻿{"transactionResponse":{"responseCode":"3","authCode":"","avsResultCode":"P","cvvResultCode":"","cavvResultCode":"","transId":"0","refTransID":"","transHash":"","testRequest":"0","accountNumber":"XXXX0015","accountType":"MasterCard","errors":[{"errorCode":"8","errorText":"The credit card has expired."}],"transHashSha2":"","SupplementalDataQualificationIndicator":0},"refId":"ref1656566086","messages":{"resultCode":"Error","message":[{"code":"E00027","text":"The transaction was unsuccessful."}]}}

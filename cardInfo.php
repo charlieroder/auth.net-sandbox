@@ -55,18 +55,23 @@ function chargeCreditCard($amount,
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="2")){
             echo "Attemped charge credit card: declined \n";
-            // return error message here
+            //error code + error message
+            //echo "response: " . $errorMessages[0]->getCode(). " " . $errorMessages[0]->getText() . "\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="3")){
             echo "Attempted charge credit card: error\n";
+            //error code + error message
+            //echo "response: " . $errorMessages[0]->getCode(). " " . $errorMessages[0]->getText() . "\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="4")){
             echo "Attempted charge credit card: held for review\n";
+            //error code + error message
+            //echo "response: " . $errorMessages[0]->getCode(). " " . $errorMessages[0]->getText() . "\n";
         }
         else {
             echo "other error";
         }
     }
-    
+
 }
 ?>
