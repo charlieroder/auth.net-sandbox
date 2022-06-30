@@ -6,7 +6,7 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-chargeCreditCard(5.00, 5424000000000015, 2021, 06);
+chargeCreditCard(5.00, $_POST['card-number'], $_POST['year'], $_POST['month']);
 // json response to attempting to charge the credit card
 //$res = chargeCreditCard();
 
@@ -104,10 +104,12 @@ function chargeCreditCard($amount,
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="2")){
             echo "Attemped charge credit card: declined \n";
             // return error message here
-            //echo "declined message : " . $tresponse->getErrorText() . "\n";
+            echo "declined message : " . $tresponse->getResponseText() . "\n";
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="3")){
             echo "Attempted charge credit card: error\n";
+            echo "error message : " . $tresponse->getResponseText() . "\n";
+
         }
         else if (($tresponse != null) && ($tresponse->getResponseCode()=="4")){
             echo "Attempted charge credit card: held for review\n";
